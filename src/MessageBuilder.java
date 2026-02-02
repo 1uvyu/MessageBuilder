@@ -6,14 +6,14 @@ public class MessageBuilder
     public MessageBuilder(String startingWord)
     {
         String currentWord = startingWord;
-        numwWords = 0;
+        numWords = 1;
         message = startingWord + " ";
-        while (!(nextWord.equals(null))
+        while (!(nextWord == null))
         {
             message += getNextWord(currentWord) + " ";
             currentWord = getNextWord(currentWord);
+            numWords++;
         }
-
     }
     /**
      * Returns a word to follow the word specified by the
@@ -27,12 +27,17 @@ public class MessageBuilder
      * Returns an abbreviation for the instance variable message,
      * as described in part (b)
      * Preconditions: Each word in message is separated by a
-     *
-     *
      * Postcondition: message is unchanged.
      */
     public String getAbbreviation()
-    { /* to be implemented in part (b) */ }
+    {
+        String abbr = message.substring(0, 1);
+        for (int i = 0; i <= message.length(); i++)
+        {
+            if (message.substring(i , i + 1).equals(" ")) abbr += message.substring(i + 1, i + 2);
+        }
+        return abbr;
+    }
 /* There may be instance variables, constructors, and methods
 that are not shown. */
 }
